@@ -1,0 +1,71 @@
+
+{% extends "inicio/encabezado.html" %}
+
+{% block imagen%}
+    {%load static%}
+    {%static 'inicio/images/contact.png'%}
+{% endblock%}
+
+{% block titulodos%} CONTACTO {%endblock%}
+{% block subtitulo%} CONTACTO DOS {%endblock%}
+
+{%block header%}
+			<!--Encabezdo -->
+			<div class="page-header">
+				<div class="page-title">
+					<h3>Contactanos
+				    <small>Ingresa tu informacion</small></h3>
+				</div>
+            </div>
+		{%endblock%}
+			<!-- /Encabezado-->
+				<!--Barra-->
+			{%block barra%}
+				<div class="breadcrumb-line">
+					<ul class="breadcrumb">
+					   
+					   <ol>
+						   <a href="{%url 'Principal'%}">
+							   {%if request.path == '/' %}
+								   Principal
+							   {%else%}
+								   Principal{{request.path}}
+							   {%endif%}
+						   </a>
+					  
+						</ol>
+					</ul>
+					</div>
+			{%endblock%}
+				<!-- /Barra-->	
+
+
+
+			<!-- Formulario -->
+		{%block contenido%}
+			<form class="form-horizontal" action="{% url 'Registrar'%}" method="POST" role="form">
+                {%csrf_token%}
+	            <div class="panel panel-default">
+	                <div class="panel-body">
+				        
+				        <div class="form-group">
+				            <label class="col-sm-2 control-label text-right">Nombre:</label>
+				            <div class="col-sm-10">
+				            	<input name="usuario" type="text" class="form-control">
+				            </div>
+				        </div>
+                         <div class="form-group">
+				            <label class="col-sm-2 control-label text-right">Mensaje:</label>
+				            <div class="col-sm-10">
+				            	<textarea name="mensaje" type="textarea" class="form-control"></textarea>
+				            </div>
+				        </div>
+                        <div class="form-actions text-right">
+                        	<input type="submit" value="Enviar" class="btn btn-primary">
+                        </div>
+
+				    </div>
+				</div>
+			</form>
+		<!-- Fin del Formulario -->
+		{% endblock %}
